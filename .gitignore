@@ -1,0 +1,47 @@
+# ==============================
+# Secretos - NUNCA subir
+# ==============================
+.env
+.env.local
+.env.production
+*.pem
+*.key
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ==============================
+# Node / Frontend
+# ==============================
+node_modules/
+dist/
+.vite/
+.netlify/
+*.log
+
+# ==============================
+# IDE / OS
+# ==============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Modelos entrenados (si los serializan)
+# ==============================
+*.joblib
+*.pkl
