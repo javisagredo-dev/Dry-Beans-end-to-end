@@ -15,25 +15,22 @@ router = APIRouter(prefix="/process", tags=["process"])
 @router.post("")
 def process():
     try:
-        df_raw = pd.read_csv(settings.DATA_URL)
+        df_raw = pd.read_csv(settings.DATA_URL, sep=';', decimal=',')
     except Exception as e:
         raise HTTPException(
             status_code=502,
             detail=f"No se pudo leer el CSV desde GitHub: {e}",
         )
-
     try:
         df_clean, _, metadata = process_dataset(df_raw)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error en pipeline: {e}")
-
     try:
         inserted = insert_clean_data(df_clean)
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Error escribiendo en Supabase: {e}"
         )
-
     return {
         "status": "ok",
         "inserted_rows": inserted,
