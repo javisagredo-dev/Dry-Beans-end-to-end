@@ -32,11 +32,6 @@ def insert_clean_data(df_clean: pd.DataFrame) -> int:
     df = df_clean.copy()
     df.columns = [_to_snake(c) for c in df.columns]
 
-    try:
-        client.rpc("truncate_beans_clean", params={}).execute()
-    except Exception as e:
-        raise Exception(f"Fallo en RPC: {str(e)}")
-
     records = df.to_dict(orient="records")
     batch_size = 500
     total = 0
