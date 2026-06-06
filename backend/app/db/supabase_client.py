@@ -1,9 +1,7 @@
 """
 Cliente único de Supabase y funciones de lectura/escritura
 sobre la tabla beans_clean.
-
 Esquema esperado de la tabla en Supabase:
-
   beans_clean (
     id              bigserial primary key,
     area            double precision,
@@ -57,7 +55,6 @@ def _to_snake(col: str) -> str:
 def insert_clean_data(df_clean: pd.DataFrame) -> int:
     """
     Limpia la tabla beans_clean y vuelve a insertar todo el df.
-
     Renombra columnas a snake_case para que coincidan con el esquema
     Postgres recomendado.
     """
@@ -67,7 +64,7 @@ def insert_clean_data(df_clean: pd.DataFrame) -> int:
     df.columns = [_to_snake(c) for c in df.columns]
 
     # Limpiar tabla antes de insertar (idempotente)
-    client.table(TABLE).delete().gte("id", 0).execute()
+    client.table(TABLE).delete().neq("id", 0).execute()
 
     # Supabase tiene límite de payload — insertamos por lotes
     records = df.to_dict(orient="records")
@@ -83,7 +80,6 @@ def insert_clean_data(df_clean: pd.DataFrame) -> int:
 def fetch_clean_data() -> pd.DataFrame:
     """Lee toda la tabla beans_clean y devuelve un DataFrame."""
     client = get_client()
-    # Usar paginación porque Supabase corta a 1000 filas por defecto
     all_rows = []
     page_size = 1000
     offset = 0
@@ -107,7 +103,6 @@ def fetch_clean_data() -> pd.DataFrame:
 
     df = pd.DataFrame(all_rows)
 
-    # Renombrar de snake_case → CamelCase (el formato que espera el pipeline/modelo)
     rename_map = {
         "area": "Area",
         "perimeter": "Perimeter",
