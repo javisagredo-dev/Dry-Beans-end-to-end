@@ -64,7 +64,7 @@ def insert_clean_data(df_clean: pd.DataFrame) -> int:
     df.columns = [_to_snake(c) for c in df.columns]
 
     # Limpiar tabla antes de insertar (idempotente)
-    client.table(TABLE).delete().neq("id", 0).execute()
+    client.rpc("truncate_beans_clean", {}).execute()
 
     # Supabase tiene límite de payload — insertamos por lotes
     records = df.to_dict(orient="records")
