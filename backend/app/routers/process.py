@@ -4,7 +4,6 @@ de sklearn y guarda el resultado limpio en Supabase.
 """
 import pandas as pd
 from fastapi import APIRouter, HTTPException
-
 from app.config import settings
 from app.ml.pipeline import process_dataset
 from app.db.supabase_client import insert_clean_data
@@ -29,7 +28,7 @@ def process():
         inserted = insert_clean_data(df_clean)
     except Exception as e:
         raise HTTPException(
-            status_code=500, detail=f"Error escribiendo en Supabase: {e}"
+            status_code=500, detail=f"Error escribiendo en Supabase: {str(e)} | tipo: {type(e).__name__}"
         )
     return {
         "status": "ok",
