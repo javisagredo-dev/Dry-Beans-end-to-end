@@ -32,14 +32,20 @@ def insert_clean_data(df_clean: pd.DataFrame) -> int:
     df = df_clean.copy()
     df.columns = [_to_snake(c) for c in df.columns]
 
-    client.rpc("truncate_beans_clean", params={}).execute()
+    try:
+        client.rpc("truncate_beans_clean", params={}).execute()
+    except Exception as e:
+        raise Exception(f"Fallo en RPC: {str(e)}")
 
     records = df.to_dict(orient="records")
     batch_size = 500
     total = 0
     for i in range(0, len(records), batch_size):
         batch = records[i : i + batch_size]
-        client.table(TABLE).insert(batch).execute()
+        try:
+            client.table(TABLE).insert(batch).execute()
+        except Exception as e:
+            raise Exception(f"Fallo en INSERT lote {i}: {str(e)}")
         total += len(batch)
     return total
 
