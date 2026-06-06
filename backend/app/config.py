@@ -10,7 +10,7 @@ class Settings:
     SUPABASE_KEY: str = os.getenv("SUPABASE_KEY", "")
     DATA_URL: str = os.getenv(
         "DATA_URL",
-        "https://raw.githubusercontent.com/javiersagredo/dry-beans-ml/main/data/dry_beans.csv",
+        "https://raw.githubusercontent.com/javisagredo-dev/Dry-Beans-end-to-end/main/data/Dry_Bean_Dataset.csv",
     )
     FRONTEND_ORIGIN: str = os.getenv("FRONTEND_ORIGIN", "*")
 
