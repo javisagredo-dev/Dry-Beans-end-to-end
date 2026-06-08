@@ -8,6 +8,6 @@ export async function checkHealth() {
 
 export async function trainModel() {
   const res = await fetch(`${BASE_URL}/train`, { method: 'POST' });
-  if (!res.ok) throw new Error(`Error al entrenar: ${res.status}`);
+  if (!res.ok) throw new Error(`Error ${res.status} al entrenar el modelo`);
   return res.json();
 }
