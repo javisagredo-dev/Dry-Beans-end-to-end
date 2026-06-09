@@ -116,7 +116,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                 <XAxis dataKey="model" tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: 'monospace' }} />
                 <YAxis domain={[89, 93.5]} tickFormatter={v => `${v}%`} tick={{ fill: '#4b5563', fontSize: 10 }} />
                 <Tooltip
-                  contentStyle={{ background: '#111827', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ background: '#111827', color:'#e8edf2' , border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   formatter={(v) => [`${v}%`]}
                   labelStyle={{ color: '#a3e635' }}
                 />
@@ -176,7 +176,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                 <XAxis dataKey="label" tick={{ fill: '#9ca3af', fontSize: 9, fontFamily: 'monospace' }} />
                 <YAxis domain={[91.8, 93]} tickFormatter={v => `${v}%`} tick={{ fill: '#4b5563', fontSize: 10 }} />
                 <Tooltip
-                  contentStyle={{ background: '#111827', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ background: '#111827', color:'#e8edf2' , border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   formatter={(v) => [`${v}%`, 'Accuracy']}
                   labelStyle={{ color: '#a3e635' }}
                 />
@@ -227,7 +227,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                 <XAxis dataKey="model" tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: 'monospace' }} />
                 <YAxis domain={[0, 0.8]} tickFormatter={v => v.toFixed(1)} tick={{ fill: '#4b5563', fontSize: 10 }} />
                 <Tooltip
-                  contentStyle={{ background: '#111827', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ background: '#111827', color:'#e8edf2' , border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   labelStyle={{ color: '#38bdf8' }}
                 />
                 <Bar dataKey="ari" name="ARI" radius={[3, 3, 0, 0]}>
@@ -300,7 +300,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                   <XAxis dataKey="name" tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: 'monospace' }} />
                   <YAxis domain={[80, 101]} tickFormatter={v => `${v}%`} tick={{ fill: '#4b5563', fontSize: 10 }} />
                   <Tooltip
-                    contentStyle={{ background: '#111827', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
+                    contentStyle={{ background: '#111827', color: '#e8edf2', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                     labelStyle={{ color: '#a3e635' }}
                     formatter={(v, name, props) => {
                       const d = props.payload;
@@ -332,7 +332,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                       if (!active || !payload?.length) return null;
                       const d = payload[0].payload;
                       return (
-                        <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: 8, padding: '10px 14px', fontFamily: 'monospace', fontSize: 12 }}>
+                        <div style={{ background: '#111827', color:'#e8edf2', border: '1px solid #1f2937', borderRadius: 8, padding: '10px 14px', fontFamily: 'monospace', fontSize: 12 }}>
                           <p style={{ color: '#a3e635', marginBottom: 4 }}>{d.name}</p>
                           <p style={{ color: '#9ca3af' }}>Precision: {d.precision}%</p>
                           <p style={{ color: '#9ca3af' }}>Recall: {d.recall}%</p>
