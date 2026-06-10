@@ -100,12 +100,13 @@ export default function PageExecutive({ metrics, loading, error, backendStatus, 
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={CLASS_DIST} layout="vertical" margin={{ left: 10, right: 30 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
-                <XAxis type="number" tick={{ fill: '#4b5563', fontSize: 10 }} unit="%" domain={[0, 30]} />
+                <XAxis type="number" tick={{ fill: '#9ca3af', fontSize: 10 }} unit="%" domain={[0, 30]} />
                 <YAxis type="category" dataKey="name" tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: 'monospace' }} width={80} />
                 <Tooltip
                   contentStyle={{ background: '#111827', color:'#e8edf2', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   formatter={(v, _, props) => [`${props.payload.count.toLocaleString()} granos (${v}%)`, '']}
                   labelStyle={{ color: '#a3e635' }}
+                  itemStyle={{ color: '#f1f5f9' }}
                 />
                 <Bar dataKey="pct" radius={[0, 4, 4, 0]}>
                   {CLASS_DIST.map((d) => (
@@ -242,7 +243,7 @@ export default function PageExecutive({ metrics, loading, error, backendStatus, 
                   <Radar name="Precision" dataKey="Precision" stroke="#a3e635" fill="#a3e635" fillOpacity={0.12} />
                   <Radar name="Recall"    dataKey="Recall"    stroke="#38bdf8" fill="#38bdf8" fillOpacity={0.12} />
                   <Radar name="F1-Score"  dataKey="F1-Score"  stroke="#f472b6" fill="#f472b6" fillOpacity={0.12} />
-                  <Tooltip contentStyle={{ background: '#111827', color:'#e8edf2', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }} labelStyle={{ color: '#a3e635' }} />
+                  <Tooltip contentStyle={{ background: '#111827', color:'#e8edf2', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }} labelStyle={{ color: '#a3e635' }} itemStyle={{ color: '#f1f5f9' }} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>

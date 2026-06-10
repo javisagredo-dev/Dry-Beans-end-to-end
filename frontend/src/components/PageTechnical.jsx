@@ -114,11 +114,12 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
               <BarChart data={BASE_RESULTS} margin={{ left: 0, right: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                 <XAxis dataKey="model" tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: 'monospace' }} />
-                <YAxis domain={[89, 93.5]} tickFormatter={v => `${v}%`} tick={{ fill: '#4b5563', fontSize: 10 }} />
+                <YAxis domain={[89, 93.5]} tickFormatter={v => `${v}%`} tick={{ fill: '#9ca3af', fontSize: 10 }} />
                 <Tooltip
                   contentStyle={{ background: '#111827', color:'#e8edf2' , border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   formatter={(v) => [`${v}%`]}
                   labelStyle={{ color: '#a3e635' }}
+                  itemStyle={{ color: '#f1f5f9' }}
                 />
                 <Bar dataKey="base" name="Base" fill="#374151" radius={[3, 3, 0, 0]} />
                 <Bar dataKey="opt" name="Optimizado" radius={[3, 3, 0, 0]}>
@@ -179,6 +180,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                   contentStyle={{ background: '#111827', color:'#e8edf2' , border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   formatter={(v) => [`${v}%`, 'Accuracy']}
                   labelStyle={{ color: '#a3e635' }}
+                  itemStyle={{ color: '#f1f5f9' }}
                 />
                 <ReferenceLine y={92.21} stroke="#374151" strokeDasharray="4 4" label={{ value: 'lineal base', fill: '#4b5563', fontSize: 10 }} />
                 <Line type="monotone" dataKey="acc" stroke="#a3e635" strokeWidth={2} dot={{ fill: '#a3e635', r: 5 }} activeDot={false} />
@@ -229,6 +231,7 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                 <Tooltip
                   contentStyle={{ background: '#111827', color:'#e8edf2' , border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                   labelStyle={{ color: '#38bdf8' }}
+                  itemStyle={{ color: '#f1f5f9' }}
                 />
                 <Bar dataKey="ari" name="ARI" radius={[3, 3, 0, 0]}>
                   {UNSUPERVISED.map((d, i) => (
@@ -298,16 +301,17 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
                 <BarChart data={f1Sorted} margin={{ left: 0, right: 20, top: 10 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                   <XAxis dataKey="name" tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: 'monospace' }} />
-                  <YAxis domain={[80, 101]} tickFormatter={v => `${v}%`} tick={{ fill: '#4b5563', fontSize: 10 }} />
+                  <YAxis domain={[80, 101]} tickFormatter={v => `${v}%`} tick={{ fill: '#9ca3af', fontSize: 10 }} />
                   <Tooltip
                     contentStyle={{ background: '#111827', color: '#e8edf2', border: '1px solid #1f2937', borderRadius: 8, fontFamily: 'monospace', fontSize: 12 }}
                     labelStyle={{ color: '#a3e635' }}
+                    itemStyle={{ color: '#f1f5f9' }}
                     formatter={(v, name, props) => {
                       const d = props.payload;
                       return [`F1: ${v}% | P: ${d.precision}% | R: ${d.recall}%`, d.name];
                     }}
                   />
-                  <ReferenceLine y={metrics.f1_macro * 100} stroke="#374151" strokeDasharray="4 4" label={{ value: `media: ${(metrics.f1_macro*100).toFixed(1)}%`, fill: '#4b5563', fontSize: 10, position: 'right' }} />
+                  <ReferenceLine y={metrics.f1_macro * 100} stroke="#374151" strokeDasharray="4 4" label={{ value: `media: ${(metrics.f1_macro*100).toFixed(1)}%`, fill: '#9ca3af', fontSize: 10, position: 'right' }} />
                   <Bar dataKey="f1" radius={[4, 4, 0, 0]}>
                     {f1Sorted.map((d, i) => (
                       <Cell key={i} fill={d.f1 >= 99 ? '#a3e635' : d.f1 < 90 ? '#ef4444' : '#38bdf8'} opacity={0.85} />
@@ -324,8 +328,8 @@ export default function PageTechnical({ metrics, loading, error, backendStatus, 
               <ResponsiveContainer width="100%" height={280}>
                 <ScatterChart margin={{ left: 10, right: 30, top: 10, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-                  <XAxis type="number" dataKey="precision" name="Precision" domain={[85, 101]} unit="%" tick={{ fill: '#9ca3af', fontSize: 10 }} label={{ value: 'Precision (%)', position: 'insideBottom', offset: -10, fill: '#4b5563', fontSize: 11 }} />
-                  <YAxis type="number" dataKey="recall" name="Recall" domain={[85, 101]} unit="%" tick={{ fill: '#9ca3af', fontSize: 10 }} label={{ value: 'Recall (%)', angle: -90, position: 'insideLeft', fill: '#4b5563', fontSize: 11 }} />
+                  <XAxis type="number" dataKey="precision" name="Precision" domain={[85, 101]} unit="%" tick={{ fill: '#9ca3af', fontSize: 10 }} label={{ value: 'Precision (%)', position: 'insideBottom', offset: -10, fill: '#9ca3af', fontSize: 11 }} />
+                  <YAxis type="number" dataKey="recall" name="Recall" domain={[85, 101]} unit="%" tick={{ fill: '#9ca3af', fontSize: 10 }} label={{ value: 'Recall (%)', angle: -90, position: 'insideLeft', fill: '#9ca3af', fontSize: 11 }} />
                   <ZAxis type="number" dataKey="support" range={[60, 250]} />
                   <Tooltip
                     content={({ active, payload }) => {
