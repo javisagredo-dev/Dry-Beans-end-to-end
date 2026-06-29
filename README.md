@@ -1,5 +1,11 @@
 # Dry Beans ML — Proyecto End-to-End
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enlace Video Explicativo Evaluacion 3
+https://youtu.be/a_MVLil5ECQ
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 Solución end-to-end de clasificación supervisada sobre el dataset Dry Beans.
 GitHub guarda el CSV crudo y el código; Render hostea el backend FastAPI que
 ejecuta el pipeline y el modelo SVM; Supabase persiste los datos limpios;
@@ -57,6 +63,7 @@ Abrir http://localhost:8000/docs para probar los endpoints.
 | GET | `/health` | Health check (útil con cron-job.org) |
 | POST | `/process` | Lee CSV de GitHub → pipeline → guarda en Supabase |
 | POST | `/train` | Lee Supabase → entrena SVM → devuelve métricas JSON |
+
 
 ## Flujo de uso
 
