@@ -25,8 +25,8 @@ dry-beans-ml/
 
 ## Equipo
 
-- **Javier Sagredo** — Product Owner / Frontend / Deploy Netlify
-- **Cristian Romero** — Backend / Pipeline ML / Deploy Render
+- **Cristian Romero** — Product Owner / Frontend / Deploy Netlify
+- **Javier Sagredo** — Backend / Pipeline ML / Deploy Render
 
 ## Stack
 
